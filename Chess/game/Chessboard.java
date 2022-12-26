@@ -11,7 +11,7 @@ import java.awt.event.*;
  * @author lukecc
  */
 
-// note: I am the king of spegetti
+// note: I am the king of spegetti ! 
 
 public class Chessboard extends JFrame implements ActionListener {
     // haven't thought of a better way to do this yet, so im gonna have to deal with this wall of variables
