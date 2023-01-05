@@ -2,7 +2,7 @@ package Chess.game;
 
 //import javax.swing.*;
 
-public class Peice /*extends JFrame*/ {
+public abstract class Peice /*extends JFrame*/ {
     // final JLabel peiceImg = new JLabel();
     final int WIDTH = 48;
     final int HEIGHT = 96;
@@ -63,9 +63,6 @@ public class Peice /*extends JFrame*/ {
         return WIDTH;
     }
 
-    public boolean movePeice(int x, int y) {
-        // code to be filled in by the individual types of peices
-        return true;
-    }
+    public abstract boolean movePeice(int dX, int dY, int cX, int cY);
 
 }
