@@ -51,6 +51,11 @@ public class Chessboard extends JFrame implements ActionListener {
     Pawn bPawn7 = new Pawn("B", 6, 6);
     Pawn bPawn8 = new Pawn("B", 7, 6);
 
+    // TODO:
+        // move the arrays into an interface (?) so that they're acessable 
+        // 
+
+
 
     // array of peices
     Peice[][] peiceArr = {          
@@ -390,6 +395,7 @@ public class Chessboard extends JFrame implements ActionListener {
         for (int i = 0; i < arr.length; i++) {
             for (int j = 0; j < arr.length; j++) {
                 arr[i][j].setText(peiceArr[j][i].getPeiceAndColor());
+                // arr[i][j].setText(i + ", " + j); 
             }
         }
     }
@@ -403,11 +409,11 @@ public class Chessboard extends JFrame implements ActionListener {
                 if (e.getSource() == arr[i][j]){
                     System.out.println(peiceArr[j][i].getPeiceAndColor());
                     if (peiceSelectedXPos != -1) {
-                        System.out.println(peiceArr[j][i].getColor() + " i = " + i + " j= " + j + " | " + peiceArr[peiceSelectedYPos][peiceSelectedXPos].getColor() + " peiceSelectedXPos = " + peiceSelectedXPos + " peiceSelectedYPos= " + peiceSelectedYPos);
+                        // System.out.println(peiceArr[j][i].getColor() + " i = " + i + " j= " + j + " | " + peiceArr[peiceSelectedYPos][peiceSelectedXPos].getColor() + " peiceSelectedXPos = " + peiceSelectedXPos + " peiceSelectedYPos= " + peiceSelectedYPos);
                         if (!(peiceArr[j][i].getColor().equals(peiceArr[peiceSelectedYPos][peiceSelectedXPos].getColor()))) {
-                            System.out.println("passed color test");
-                            if (peiceArr[j][i].movePeice(j, i, peiceSelectedXPos, peiceSelectedYPos)) {
-                                System.out.println("passed move test");
+                            // System.out.println("passed color test");
+                            if (peiceArr[peiceSelectedYPos][peiceSelectedXPos].movePeice(i, j, peiceSelectedXPos, peiceSelectedYPos)) {
+                                // System.out.println("passed move test: " + j + ", " + i);
                                 peiceArr[j][i] = peiceArr[peiceSelectedYPos][peiceSelectedXPos];
                                 peiceArr[peiceSelectedYPos][peiceSelectedXPos] = new Empty(peiceSelectedXPos, peiceSelectedYPos);
                             } else {
