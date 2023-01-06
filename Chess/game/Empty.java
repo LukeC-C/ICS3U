@@ -8,6 +8,6 @@ public class Empty extends Peice {
     @Override
     public boolean movePeice(int dX, int dY, int cX, int cY) {
         System.out.println("this is an empty square!");
-        return true;
+        return false;
     }
 }

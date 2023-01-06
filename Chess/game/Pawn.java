@@ -7,29 +7,31 @@ public class Pawn extends Peice {
         color = c;
     }
 
+    boolean hasntMoved = true;
+
     @Override
     public boolean movePeice(int dX, int dY, int cX, int cY) {
-        // if (x == super.getXPos()) {
-        //     if (color == "B"){
-        //         if (super.getYPos() - y == 1 || super.getYPos() - y == 2) {
-        //             super.yPos = y;
-        //             return true;
-        //         } else {
-        //             return false;
-        //         }
-        //     } else if (color == "W") {
-        //         if (y - super.getYPos() == 1 || y - super.getYPos() == 2) {
-        //             super.yPos = y;
-        //             return true;
-        //         } else {
-        //             return false;
-        //         }
-        //     } else {
-        //         return false;
-        //     }
-        // } else {
-        //     return false;
-        // }
-        return true; // its a mess, ill fix it later
+        if (color.equals("B")) {
+            if (dY - cY == -1 && dX == cX) {
+                if (hasntMoved) hasntMoved = false;
+                return true;
+            } else if (dY - cY == -2 && dX == cX && hasntMoved) { 
+                if (hasntMoved) hasntMoved = false;
+                return true;
+            } else {
+                return false;
+            }
+        } else if (color.equals("W")) {
+            if (dY - cY == 1 && dX == cX) {
+                if (hasntMoved) hasntMoved = false;
+                return true;
+            } else if (dY - cY == 2 && dX == cX && hasntMoved) { 
+                if (hasntMoved) hasntMoved = false;
+                return true;
+            } else {
+                return false;
+            }
+        }
+        return false;
     }
 }

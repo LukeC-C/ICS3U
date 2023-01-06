@@ -2,7 +2,7 @@ package Chess.game;
 
 //import javax.swing.*;
 
-public abstract class Peice /*extends JFrame*/ {
+public abstract class Peice {
     // final JLabel peiceImg = new JLabel();
     final int WIDTH = 48;
     final int HEIGHT = 96;
