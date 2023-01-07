@@ -4,8 +4,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-// testing updates on github (or whatever they're called)
-
 /**
  *
  * @author lukecc
@@ -14,63 +12,59 @@ import java.awt.event.*;
 // note: I am the king of spegetti! 
 
 public class Chessboard extends JFrame implements ActionListener {
+    Peice[][] peiceArr = new Peice[8][8];
+
     // haven't thought of a better way to do this yet, so im gonna have to deal with this wall of variables
-    Rook wRook1 = new Rook("W", 0, 0);
-    Knight wKnight1 = new Knight("W", 1, 0);
-    Bishop wBishop1 = new Bishop("W", 2, 0);
-    Queen wQueen = new Queen("W", 3, 0);
-    King wKing = new King("W", 4, 0);
-    Bishop wBishop2 = new Bishop("W", 5, 0);
-    Knight wKnight2 = new Knight("W", 6, 0);
-    Rook wRook2 = new Rook("W", 7, 0);
+    Rook wRook1 = new Rook("W", 0, 0, peiceArr);
+    Knight wKnight1 = new Knight("W", 1, 0, peiceArr);
+    Bishop wBishop1 = new Bishop("W", 2, 0, peiceArr);
+    Queen wQueen = new Queen("W", 3, 0, peiceArr);
+    King wKing = new King("W", 4, 0, peiceArr);
+    Bishop wBishop2 = new Bishop("W", 5, 0, peiceArr);
+    Knight wKnight2 = new Knight("W", 6, 0, peiceArr);
+    Rook wRook2 = new Rook("W", 7, 0, peiceArr);
 
-    Pawn wPawn1 = new Pawn("W", 0, 1);
-    Pawn wPawn2 = new Pawn("W", 1, 1);
-    Pawn wPawn3 = new Pawn("W", 2, 1);
-    Pawn wPawn4 = new Pawn("W", 3, 1);
-    Pawn wPawn5 = new Pawn("W", 4, 1);
-    Pawn wPawn6 = new Pawn("W", 5, 1);
-    Pawn wPawn7 = new Pawn("W", 6, 1);
-    Pawn wPawn8 = new Pawn("W", 7, 1);
+    Pawn wPawn1 = new Pawn("W", 0, 1, peiceArr);
+    Pawn wPawn2 = new Pawn("W", 1, 1, peiceArr);
+    Pawn wPawn3 = new Pawn("W", 2, 1, peiceArr);
+    Pawn wPawn4 = new Pawn("W", 3, 1, peiceArr);
+    Pawn wPawn5 = new Pawn("W", 4, 1, peiceArr);
+    Pawn wPawn6 = new Pawn("W", 5, 1, peiceArr);
+    Pawn wPawn7 = new Pawn("W", 6, 1, peiceArr);
+    Pawn wPawn8 = new Pawn("W", 7, 1, peiceArr);
 
-    Rook bRook1 = new Rook("B", 0, 7);
-    Knight bKnight1 = new Knight("B", 1, 7);
-    Bishop bBishop1 = new Bishop("B", 2, 7);
-    Queen bQueen = new Queen("B", 3, 7);
-    King bKing = new King("B", 4, 7);
-    Bishop bBishop2 = new Bishop("B", 5, 7);
-    Knight bKnight2 = new Knight("B", 6, 7);
-    Rook bRook2 = new Rook("B", 7, 7);
+    Rook bRook1 = new Rook("B", 0, 7, peiceArr);
+    Knight bKnight1 = new Knight("B", 1, 7, peiceArr);
+    Bishop bBishop1 = new Bishop("B", 2, 7, peiceArr);
+    Queen bQueen = new Queen("B", 3, 7, peiceArr);
+    King bKing = new King("B", 4, 7, peiceArr);
+    Bishop bBishop2 = new Bishop("B", 5, 7, peiceArr);
+    Knight bKnight2 = new Knight("B", 6, 7, peiceArr);
+    Rook bRook2 = new Rook("B", 7, 7, peiceArr);
 
-    Pawn bPawn1 = new Pawn("B", 0, 6);
-    Pawn bPawn2 = new Pawn("B", 1, 6);
-    Pawn bPawn3 = new Pawn("B", 2, 6);
-    Pawn bPawn4 = new Pawn("B", 3, 6);
-    Pawn bPawn5 = new Pawn("B", 4, 6);
-    Pawn bPawn6 = new Pawn("B", 5, 6);
-    Pawn bPawn7 = new Pawn("B", 6, 6);
-    Pawn bPawn8 = new Pawn("B", 7, 6);
+    Pawn bPawn1 = new Pawn("B", 0, 6, peiceArr);
+    Pawn bPawn2 = new Pawn("B", 1, 6, peiceArr);
+    Pawn bPawn3 = new Pawn("B", 2, 6, peiceArr);
+    Pawn bPawn4 = new Pawn("B", 3, 6, peiceArr);
+    Pawn bPawn5 = new Pawn("B", 4, 6, peiceArr);
+    Pawn bPawn6 = new Pawn("B", 5, 6, peiceArr);
+    Pawn bPawn7 = new Pawn("B", 6, 6, peiceArr);
+    Pawn bPawn8 = new Pawn("B", 7, 6, peiceArr);
 
-    // TODO:
-        // move the arrays into an interface (?) so that they're acessable 
-        // 
+    // // array of peices
+    // peiceArr = {          
+    //                 {wRook1, wKnight1, wBishop1, wQueen, wKing, wBishop2, wKnight2, wRook2},
+    //                 {wPawn1, wPawn2, wPawn3, wPawn4, wPawn5, wPawn6, wPawn7, wPawn8},
 
+    //                 // these 4 rows are just placeholders for the Empty slots that i add later
+    //                 {wPawn1, wPawn1, wPawn1, wPawn1, wPawn1, wPawn1, wPawn1, wPawn1},
+    //                 {wPawn1, wPawn1, wPawn1, wPawn1, wPawn1, wPawn1, wPawn1, wPawn1},
+    //                 {wPawn1, wPawn1, wPawn1, wPawn1, wPawn1, wPawn1, wPawn1, wPawn1},
+    //                 {wPawn1, wPawn1, wPawn1, wPawn1, wPawn1, wPawn1, wPawn1, wPawn1},
 
-
-    // array of peices
-    Peice[][] peiceArr = {          
-                            {wRook1, wKnight1, wBishop1, wQueen, wKing, wBishop2, wKnight2, wRook2},
-                            {wPawn1, wPawn2, wPawn3, wPawn4, wPawn5, wPawn6, wPawn7, wPawn8},
-
-                            // these 4 rows are just placeholders for the Empty slots that i add later
-                            {wPawn1, wPawn1, wPawn1, wPawn1, wPawn1, wPawn1, wPawn1, wPawn1},
-                            {wPawn1, wPawn1, wPawn1, wPawn1, wPawn1, wPawn1, wPawn1, wPawn1},
-                            {wPawn1, wPawn1, wPawn1, wPawn1, wPawn1, wPawn1, wPawn1, wPawn1},
-                            {wPawn1, wPawn1, wPawn1, wPawn1, wPawn1, wPawn1, wPawn1, wPawn1},
-
-                            {bPawn1, bPawn2, bPawn3, bPawn4, bPawn5, bPawn6, bPawn7, bPawn8},
-                            {bRook1, bKnight1, bBishop1, bQueen, bKing, bBishop2, bKnight2, bRook2}
-                          };
+    //                 {bPawn1, bPawn2, bPawn3, bPawn4, bPawn5, bPawn6, bPawn7, bPawn8},
+    //                 {bRook1, bKnight1, bBishop1, bQueen, bKing, bBishop2, bKnight2, bRook2}
+    //             };
 
     // array of buttons used to see what square is clicked
     JButton[][] arr = new JButton[8][8];
@@ -192,6 +186,86 @@ public class Chessboard extends JFrame implements ActionListener {
         setBounds(0, 0, WIDTH + 13, HEIGHT + 37 /* please don't ask me about the hardcoded numbers; swing is weird */);
         setLayout(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+        for (int j = 0; j < peiceArr.length; j++) {
+            for (int i = 0; i < peiceArr.length; i++) {
+                if (i == 0 && j == 0) {
+                    peiceArr[j][i] = wRook1;
+                } else if (i == 1 && j == 0) {
+                    peiceArr[j][i] = wKnight1;
+                } else if (i == 2 && j == 0) {
+                    peiceArr[j][i] = wBishop1;
+                } else if (i == 3 && j == 0) {
+                    peiceArr[j][i] = wQueen;
+                } else if (i == 4 && j == 0) {
+                    peiceArr[j][i] = wKing;
+                } else if (i == 5 && j == 0) {
+                    peiceArr[j][i] = wBishop2;
+                } else if (i == 6 && j == 0) {
+                    peiceArr[j][i] = wKnight2;
+                } else if (i == 7 && j == 0) {
+                    peiceArr[j][i] = wRook2;
+                } else if (i == 0 && j == 1) {
+                    peiceArr[j][i] = wPawn1;
+                } else if (i == 1 && j == 1) {
+                    peiceArr[j][i] = wPawn2;
+                } else if (i == 2 && j == 1) {
+                    peiceArr[j][i] = wPawn3;
+                } else if (i == 3 && j == 1) {
+                    peiceArr[j][i] = wPawn4;
+                } else if (i == 4 && j == 1) {
+                    peiceArr[j][i] = wPawn5;
+                } else if (i == 5 && j == 1) {
+                    peiceArr[j][i] = wPawn6;
+                } else if (i == 6 && j == 1) {
+                    peiceArr[j][i] = wPawn7;
+                } else if (i == 7 && j == 1) {
+                    peiceArr[j][i] = wPawn8;
+                }
+                
+                 else if (i == 0 && j == 6) {
+                    peiceArr[j][i] = bPawn1;
+                } else if (i == 1 && j == 6) {
+                    peiceArr[j][i] = bPawn2;
+                } else if (i == 2 && j == 6) {
+                    peiceArr[j][i] = bPawn3;
+                } else if (i == 3 && j == 6) {
+                    peiceArr[j][i] = bPawn4;
+                } else if (i == 4 && j == 6) {
+                    peiceArr[j][i] = bPawn5;
+                } else if (i == 5 && j == 6) {
+                    peiceArr[j][i] = bPawn6;
+                } else if (i == 6 && j == 6) {
+                    peiceArr[j][i] = bPawn7;
+                } else if (i == 7 && j == 6) {
+                    peiceArr[j][i] = bPawn8;
+                } else if (i == 0 && j == 7) {
+                    peiceArr[j][i] = bRook1;
+                } else if (i == 1 && j == 7) {
+                    peiceArr[j][i] = bKnight1;
+                } else if (i == 2 && j == 7) {
+                    peiceArr[j][i] = bBishop1;
+                } else if (i == 3 && j == 7) {
+                    peiceArr[j][i] = bQueen;
+                } else if (i == 4 && j == 7) {
+                    peiceArr[j][i] = bKing;
+                } else if (i == 5 && j == 7) {
+                    peiceArr[j][i] = bBishop2;
+                } else if (i == 6 && j == 7) {
+                    peiceArr[j][i] = bKnight2;
+                } else if (i == 7 && j == 7) {
+                    peiceArr[j][i] = bRook2;
+                } else {
+                    peiceArr[j][i] = new Empty(i, j, peiceArr);;
+                }
+            }
+        }
+
+        for (int i = 0; i < peiceArr.length; i++) {
+            for (int j = 0; j < peiceArr.length; j++) {
+                peiceArr[i][j].skroinkPeices(peiceArr);
+            }
+        }
 
         // wRook1Image.setIcon(wRook1ImageIcon);
         // wRook1Image.setBounds(wRook1.getXPos() * 100 + 25, wRook1.getYPos() * 100, wRook1.getWIDTH(), wRook1.getHEIGHT());
@@ -325,13 +399,13 @@ public class Chessboard extends JFrame implements ActionListener {
         // this.add(emptyImage);
 
         // using x and y here cus its easier to understand
-        for (int x = 0; x < peiceArr.length; x++) {
-            for (int y = 0; y < peiceArr.length; y++) {
-                if (x >=2 && y >= 0 && x <= 5 && y <= 7) {
-                    peiceArr[x][y] = new Empty(x, y);
-                }
-            }
-        }
+        // for (int x = 0; x < peiceArr.length; x++) {
+        //     for (int y = 0; y < peiceArr.length; y++) {
+        //         if (y >=2 && x >= 0 && y <= 5 && x <= 7) {
+        //             peiceArr[y][x] = new Empty(x, y, peiceArr);
+        //         }
+        //     }
+        // }
 
         // debug tool to print out the board in the console
         for (int i = 0; i < peiceArr.length; i++) {
@@ -415,7 +489,12 @@ public class Chessboard extends JFrame implements ActionListener {
                             if (peiceArr[peiceSelectedYPos][peiceSelectedXPos].movePeice(i, j, peiceSelectedXPos, peiceSelectedYPos)) {
                                 // System.out.println("passed move test: " + j + ", " + i);
                                 peiceArr[j][i] = peiceArr[peiceSelectedYPos][peiceSelectedXPos];
-                                peiceArr[peiceSelectedYPos][peiceSelectedXPos] = new Empty(peiceSelectedXPos, peiceSelectedYPos);
+                                peiceArr[peiceSelectedYPos][peiceSelectedXPos] = new Empty(peiceSelectedXPos, peiceSelectedYPos, peiceArr);
+                                for (int k = 0; k < peiceArr.length; k++) {
+                                    for (int l = 0; l < peiceArr.length; l++) {
+                                        peiceArr[k][l].skroinkPeices(peiceArr);
+                                    }
+                                }
                             } else {
                                 System.out.println("You cant move here!");
                                 System.out.println("Selected square: " + peiceArr[j][i].getPeiceAndColor() + " Peice to move: " + peiceArr[peiceSelectedYPos][peiceSelectedXPos].getPeiceAndColor());

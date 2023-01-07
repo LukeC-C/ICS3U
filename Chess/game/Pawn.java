@@ -2,9 +2,14 @@ package Chess.game;
 
 public class Pawn extends Peice {
     String color;
-    public Pawn (String c, int x, int y) {
-        super("Pawn", c, x, y);
+    public Pawn (String c, int x, int y, Peice[][] pA) {
+        super("Pawn", c, x, y, pA);
         color = c;
+    }
+
+    @Override
+    public void skroinkPeices(Peice[][] pA) {
+        peiceArr = pA;
     }
 
     boolean hasntMoved = true;

@@ -6,16 +6,18 @@ public abstract class Peice {
     // final JLabel peiceImg = new JLabel();
     final int WIDTH = 48;
     final int HEIGHT = 96;
+    Peice[][] peiceArr;
     protected String peice;
     protected String color;
     protected int xPos;
     protected int yPos;
     
-    public Peice (String p, String c, int x, int y) {
+    public Peice (String p, String c, int x, int y, Peice[][] pA) {
         peice = p;
         color = c;
         xPos = x;
         yPos = y;
+        peiceArr = pA;
 
         try {
             // if (p != "Empty") {
@@ -62,6 +64,8 @@ public abstract class Peice {
     public int getWIDTH() {
         return WIDTH;
     }
+
+    public abstract void skroinkPeices(Peice[][] pA);
 
     public abstract boolean movePeice(int dX, int dY, int cX, int cY);
 

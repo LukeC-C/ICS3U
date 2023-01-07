@@ -1,8 +1,13 @@
 package Chess.game;
 
 public class Empty extends Peice {
-    public Empty (int x, int y) {
-        super("Empty", "E", x, y);
+    public Empty (int x, int y, Peice[][] pA) {
+        super("Empty", "E", x, y, pA);
+    }
+
+    @Override
+    public void skroinkPeices(Peice[][] pA) {
+        peiceArr = pA;
     }
 
     @Override

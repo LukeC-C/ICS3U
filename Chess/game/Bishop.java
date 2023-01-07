@@ -3,8 +3,13 @@ package Chess.game;
 import java.lang.Math;
 
 public class Bishop extends Peice {
-    public Bishop (String color, int x, int y) {
-        super("Bishop", color, x, y);
+    public Bishop (String color, int x, int y, Peice[][] pA) {
+        super("Bishop", color, x, y, pA);
+    }
+
+    @Override
+    public void skroinkPeices(Peice[][] pA) {
+        peiceArr = pA;
     }
 
     @Override

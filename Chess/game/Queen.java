@@ -1,8 +1,13 @@
 package Chess.game;
 
 public class Queen extends Peice {
-    public Queen (String color, int x, int y) {
-        super("Queen", color, x, y);
+    public Queen (String color, int x, int y, Peice[][] pA) {
+        super("Queen", color, x, y, pA);
+    }
+
+    @Override
+    public void skroinkPeices(Peice[][] pA) {
+        peiceArr = pA;
     }
 
     @Override
