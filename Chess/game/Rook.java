@@ -21,17 +21,19 @@ public class Rook extends Peice {
                 if (dX == cX) {
                     System.out.println("got to first step");
                     if (dX < cX) {
-                        System.out.println("got to second step");
                         if (j == dY && i > dX && i < cX) {
-                            System.out.println("got to third step");
                             if (!(peiceArr[i][j] instanceof Empty)) {
-                                System.out.println("got to fourth step");
                                 System.out.println("nopers");
                                 return false;
                             }
+                        } else {
+                            return true;
                         }
                     } else {
+
+                        // TODO Here V V V
                         System.out.println("got to second step");
+                        System.out.println("J " + j + " dY: " + dY + " i: " + i + " cX: " + cX + " dX " + dX);
                         if (j == dY && i > cX && i < dX) {
                             System.out.println("got to third step");
                             if (!(peiceArr[i][j] instanceof Empty)) {
@@ -39,26 +41,27 @@ public class Rook extends Peice {
                                 System.out.println("nopers");
                                 return false;
                             }
+                        } else {
+                            System.out.println();
+                            return true;
                         }
+                        // this one ^^^^^
+                        
                     }
                 } else if (dY == cY) { 
-                    System.out.println("got to first step");
                     if (dY < cY) {
-                        System.out.println("got to second step");
                         if (i == dY && i > dY && i < cY) {
-                            System.out.println("got to third step");
                             if (!(peiceArr[i][j] instanceof Empty)) {
-                                System.out.println("got to fourth step");
                                 System.out.println("nopers");
                                 return false;
                             }
+                        } else {
+                            System.out.println();
+                            return true;
                         }
                     } else {
-                        System.out.println("got to second step");
                         if (i == dY && i > cY && i < dY) {
-                            System.out.println("got to third step");
                             if (!(peiceArr[i][j] instanceof Empty)) {
-                                System.out.println("got to fourth step");
                                 System.out.println("nopers");
                                 return false;
                             }
