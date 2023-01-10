@@ -14,8 +14,6 @@ import java.awt.event.*;
 public class Chessboard extends JFrame implements ActionListener {
     Peice[][] peiceArr = new Peice[8][8];
     int numKings = 0;
-    String wKingPos = "-1-1";
-    String bKingPos = "-1-1";
 
     // haven't thought of a better way to do this yet, so im gonna have to deal with this wall of variables
     Rook wRook1 = new Rook("W", 0, 0, peiceArr);
@@ -477,6 +475,17 @@ public class Chessboard extends JFrame implements ActionListener {
         }
 
         arr[7][5].setForeground(Color.RED);
+
+        // System.out.println("""
+        //                         -----------------------------------------------
+        //                         __        __
+        //                         \\ \\  /\\  / /
+        //                          \\ \\/  \\/ /
+        //                           \\  /\\  /
+        //                            \\/  \\/
+                                
+        //                         -----------------------------------------------
+        //                         """);
     }
 
 
@@ -533,24 +542,20 @@ public class Chessboard extends JFrame implements ActionListener {
                     
                     for (int k = 0; k < arr.length; k++) {
                         for (int l = 0; l < arr.length; l++) {
-                            if (peiceArr[l][k] instanceof King) {
-                                numKings++;
-                                if (peiceArr[l][k].getColor() == "B") {
-                                    bKingPos = peiceArr[l][k].getXPos() + "" + peiceArr[l][k].getYPos();
-                                } else {
-                                    wKingPos = peiceArr[l][k].getXPos() + "" + peiceArr[l][k].getYPos();
+                                if (peiceArr[l][k].getXPos() == wKing.getXPos() && peiceArr[l][k].getYPos() == wKing.getYPos() && peiceArr[l][k].getColor() != wKing.getColor() && !(peiceArr[l][k] instanceof King)) {
+                                    System.out.println("Black Wins!_____________________________");
+                                } else if (peiceArr[l][k].getXPos() == bKing.getXPos() && peiceArr[l][k].getYPos() == wKing.getYPos() && peiceArr[l][k].getColor() != bKing.getColor() && !(peiceArr[l][k] instanceof King)) {
+                                    System.out.println("White Wins!_____________________________");
                                 }
                             }
                         }
                     }
+                    // System.out.println("kx: " + wKing.getXPos() + " ky: " + wKing.getYPos() + "|" + "px: " + j + " py: " + i);
                     // TODO finish win screen in console 
-                    if (numKings < 2) {
-                        if ()
-                    }
                 }
             }
         }
-    }
+    
     
     public static void main(String[] args) {
         new Chessboard();

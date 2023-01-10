@@ -17,9 +17,12 @@ public class King extends Peice {
         int deltaY = Math.abs(dY - cY);
         if ((deltaX == 1 || deltaY == 1) && (deltaX < 2 && deltaY < 2)) {
             super.xPos = dX;
+            super.yPos = dY;
             return true;
         } else {
             System.out.println("invalid king move!");
+            super.xPos = dX;
+            super.yPos = dY;
             return false;
         }
     }
