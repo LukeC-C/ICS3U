@@ -13,6 +13,9 @@ import java.awt.event.*;
 
 public class Chessboard extends JFrame implements ActionListener {
     Peice[][] peiceArr = new Peice[8][8];
+    int numKings = 0;
+    String wKingPos = "-1-1";
+    String bKingPos = "-1-1";
 
     // haven't thought of a better way to do this yet, so im gonna have to deal with this wall of variables
     Rook wRook1 = new Rook("W", 0, 0, peiceArr);
@@ -422,7 +425,7 @@ public class Chessboard extends JFrame implements ActionListener {
                     arr[i][j] =  new JButton();
                    // arr[i][j].setText("i:" + i + "j:" + j);
                     arr[i][j].setBounds(0 + (WIDTH / 8 * i), 0 + (HEIGHT / 8 * j), WIDTH / 8, HEIGHT / 8);
-                    arr[i][j].setBackground(Color.RED);
+                    // arr[i][j].setBackground(Color.RED);
                     arr[i][j].addActionListener(this);
                     // thanks stackoverflow (@Jeff B)
                         arr[i][j].setOpaque(false);
@@ -433,7 +436,7 @@ public class Chessboard extends JFrame implements ActionListener {
                     arr[i][j] = new JButton();
                   //  arr[i][j].setText("i:" + i + "j:" + j);
                     arr[i][j].setBounds(0 + (WIDTH / 8 * i), 0 + (HEIGHT / 8 * j), WIDTH / 8, HEIGHT / 8);
-                    arr[i][j].setBackground(Color.RED);
+                    // arr[i][j].setBackground(Color.RED);
                     arr[i][j].addActionListener(this);
                     arr[i][j].setOpaque(false);
                     arr[i][j].setContentAreaFilled(false);
@@ -472,6 +475,8 @@ public class Chessboard extends JFrame implements ActionListener {
                 // arr[i][j].setText(i + ", " + j); 
             }
         }
+
+        arr[7][5].setForeground(Color.RED);
     }
 
 
@@ -502,16 +507,20 @@ public class Chessboard extends JFrame implements ActionListener {
                         } else {
                             System.out.println("This is your own peice!");
                             System.out.println("Selected square: " + peiceArr[j][i].getPeiceAndColor() + " Peice to move: " + peiceArr[peiceSelectedYPos][peiceSelectedXPos].getPeiceAndColor());
-                            peiceSelectedXPos = i;
-                            peiceSelectedYPos = j;
+                            if (!(peiceArr[j][i] instanceof Empty)) {
+                                peiceSelectedXPos = i;
+                                peiceSelectedYPos = j;
+                            }
                         }
                         // peiceImages[i][j - 1] = peiceImages[i][j];
                         // peiceImages[i][j - 1].setBounds(peiceArr[i][j].getXPos() * 100 + 25, peiceArr[i][j].getYPos() * 100, peiceArr[i][j].getWIDTH(), peiceArr[i][j].getHEIGHT());
                         peiceSelectedXPos = -1;
                     } else {
-                        System.out.println("setting coords");
-                        peiceSelectedXPos = i;
-                        peiceSelectedYPos = j;
+                        if (!(peiceArr[j][i] instanceof Empty)) {
+                            System.out.println("setting coords");
+                            peiceSelectedXPos = i;
+                            peiceSelectedYPos = j;
+                        }
 
                         System.out.println(peiceSelectedXPos + ", " + peiceSelectedYPos);
                     }
@@ -519,6 +528,24 @@ public class Chessboard extends JFrame implements ActionListener {
                         for (int l = 0; l < arr.length; l++) {
                             arr[k][l].setText(peiceArr[l][k].getPeiceAndColor());
                         }
+                    }
+
+                    
+                    for (int k = 0; k < arr.length; k++) {
+                        for (int l = 0; l < arr.length; l++) {
+                            if (peiceArr[l][k] instanceof King) {
+                                numKings++;
+                                if (peiceArr[l][k].getColor() == "B") {
+                                    bKingPos = peiceArr[l][k].getXPos() + "" + peiceArr[l][k].getYPos();
+                                } else {
+                                    wKingPos = peiceArr[l][k].getXPos() + "" + peiceArr[l][k].getYPos();
+                                }
+                            }
+                        }
+                    }
+                    // TODO finish win screen in console 
+                    if (numKings < 2) {
+                        if ()
                     }
                 }
             }

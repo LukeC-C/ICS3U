@@ -33,7 +33,7 @@ public class Rook extends Peice {
 
                         // TODO Here V V V
                         System.out.println("got to second step");
-                        System.out.println("J " + j + " dY: " + dY + " i: " + i + " cX: " + cX + " dX " + dX);
+                        System.out.println("j: " + j + " dY: " + dY + " i: " + i + " cX: " + cX + " dX " + dX);
                         if (j == dY && i > cX && i < dX) {
                             System.out.println("got to third step");
                             if (!(peiceArr[i][j] instanceof Empty)) {
@@ -41,9 +41,6 @@ public class Rook extends Peice {
                                 System.out.println("nopers");
                                 return false;
                             }
-                        } else {
-                            System.out.println();
-                            return true;
                         }
                         // this one ^^^^^
                         
