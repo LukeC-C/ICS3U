@@ -3,6 +3,7 @@ package Chess.game;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.*;
 
 /**
  *
@@ -486,9 +487,40 @@ public class Chessboard extends JFrame implements ActionListener {
                                 
         //                         -----------------------------------------------
         //                         """);
+
     }
 
+    public static void doSetup() {
+        try {
+            FileWriter fw = new FileWriter("save.txt");
+            PrintWriter pw = new PrintWriter(fw);
 
+            for (int i = 0; i < 8; i++) {
+                for (int j = 0; j < 8; j++) {
+                    pw.println();
+                }
+            }
+            pw.close();
+        } catch (IOException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+
+    public static void saveMove(Peice[][] pA) {
+        try {
+            FileWriter fw = new FileWriter("save.txt", true);
+            PrintWriter pw = new PrintWriter(fw);
+
+            for (int i = 0; i < pA.length; i++) {
+                for (int j = 0; j < pA.length; j++) {
+                    pw.println(pA[j][i].getPeiceAndColor());
+                }
+            }
+            pw.close();
+        } catch (IOException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
     
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -507,6 +539,7 @@ public class Chessboard extends JFrame implements ActionListener {
                                 for (int k = 0; k < peiceArr.length; k++) {
                                     for (int l = 0; l < peiceArr.length; l++) {
                                         peiceArr[k][l].skroinkPeices(peiceArr);
+                                        saveMove(peiceArr);
                                     }
                                 }
                             } else {
@@ -533,6 +566,7 @@ public class Chessboard extends JFrame implements ActionListener {
 
                         System.out.println(peiceSelectedXPos + ", " + peiceSelectedYPos);
                     }
+
                     for (int k = 0; k < arr.length; k++) {
                         for (int l = 0; l < arr.length; l++) {
                             arr[k][l].setText(peiceArr[l][k].getPeiceAndColor());
@@ -540,25 +574,27 @@ public class Chessboard extends JFrame implements ActionListener {
                     }
 
                     
-                    for (int k = 0; k < arr.length; k++) {
-                        for (int l = 0; l < arr.length; l++) {
-                                if (peiceArr[l][k].getXPos() == wKing.getXPos() && peiceArr[l][k].getYPos() == wKing.getYPos() && peiceArr[l][k].getColor() != wKing.getColor() && !(peiceArr[l][k] instanceof King)) {
-                                    System.out.println("Black Wins!_____________________________");
-                                } else if (peiceArr[l][k].getXPos() == bKing.getXPos() && peiceArr[l][k].getYPos() == wKing.getYPos() && peiceArr[l][k].getColor() != bKing.getColor() && !(peiceArr[l][k] instanceof King)) {
-                                    System.out.println("White Wins!_____________________________");
-                                }
-                            }
-                        }
-                    }
+                    // for (int k = 0; k < arr.length; k++) {
+                    //     for (int l = 0; l < arr.length; l++) {
+                    //         if (peiceArr[l][k].getXPos() == wKing.getXPos() && peiceArr[l][k].getYPos() == wKing.getYPos() /*&& peiceArr[l][k].getColor() != wKing.getColor()*/ && !(peiceArr[l][k] instanceof King)) {
+                    //             System.out.println("Black Wins!_____________________________");
+                    //         } else if (peiceArr[l][k].getXPos() == bKing.getXPos() && peiceArr[l][k].getYPos() == wKing.getYPos() && peiceArr[l][k].getColor() != bKing.getColor() && !(peiceArr[l][k] instanceof King)) {
+                    //             System.out.println("White Wins!_____________________________");
+                    //         }
+                    //         // System.out.println(peiceArr[l][k].getXPos() + " " + wKing.getXPos());
+                    //     }
+                    // }
+                }
                     // System.out.println("kx: " + wKing.getXPos() + " ky: " + wKing.getYPos() + "|" + "px: " + j + " py: " + i);
                     // TODO finish win screen in console 
-                }
             }
         }
-    
+    }
+
     
     public static void main(String[] args) {
         new Chessboard();
+        doSetup();
     }
     
 }
