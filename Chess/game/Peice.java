@@ -1,5 +1,7 @@
 package Chess.game;
 
+import java.io.PipedWriter;
+
 //import javax.swing.*;
 
 public abstract class Peice {
@@ -63,6 +65,14 @@ public abstract class Peice {
 
     public int getWIDTH() {
         return WIDTH;
+    }
+
+    // TODO pass in coords as params. get coords from arr.
+        // before you waste your time on it future me, no you cant just do it in Chessboard
+    public static Peice toPeice(String str) {
+        if (str.substring(0,2).equals("Pa")) {
+            return new Pawn(str, 0, 0, null)
+        }
     }
 
     public abstract void skroinkPeices(Peice[][] pA);
