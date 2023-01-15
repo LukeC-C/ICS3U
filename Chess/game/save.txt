@@ -59,6 +59,6 @@ Pa_W
 Em_E
 Em_E
 Em_E
-Ro_B
-Pa_B
 Em_E
+Pa_B
+Ro_B

@@ -69,9 +69,45 @@ public abstract class Peice {
 
     // TODO pass in coords as params. get coords from arr.
         // before you waste your time on it future me, no you cant just do it in Chessboard
-    public static Peice toPeice(String str) {
+    public static Peice toPeice(String str, int x, int y) {
         if (str.substring(0,2).equals("Pa")) {
-            return new Pawn(str, 0, 0, null)
+            if (str.substring(3).equals("W")) {
+                return new Pawn("W", x, y, null);
+            } else {
+                return new Pawn("B", x, y, null);
+            }
+        } else if (str.substring(0,2).equals("Ro")) {
+            if (str.substring(3).equals("W")) {
+                return new Rook("W", x, y, null);
+            } else {
+                return new Rook("B", x, y, null);
+            }
+        } else if (str.substring(0,2).equals("Kn")) {
+            if (str.substring(3).equals("W")) {
+                return new Knight("W", x, y, null);
+            } else {
+                return new Knight("B", x, y, null);
+            }
+        } else if (str.substring(0,2).equals("Bi")) {
+            if (str.substring(3).equals("W")) {
+                return new Bishop("W", x, y, null);
+            } else {
+                return new Bishop("B", x, y, null);
+            }
+        } else if (str.substring(0,2).equals("Qu")) {
+            if (str.substring(3).equals("W")) {
+                return new Queen("W", x, y, null);
+            } else {
+                return new Queen("B", x, y, null);
+            }
+        } else if (str.substring(0,2).equals("Ki")) {
+            if (str.substring(3).equals("W")) {
+                return new King("W", x, y, null);
+            } else {
+                return new King("B", x, y, null);
+            }
+        } else {
+            return new Empty(x, y, null);
         }
     }
 
