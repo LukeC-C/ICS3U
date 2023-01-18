@@ -8,6 +8,8 @@ public class startMenu extends JFrame implements ActionListener{
     JLabel startMenuBackground = new JLabel();
     JButton startSavedGameButton = new JButton();
     JButton startNewGameButton = new JButton();
+    JFrame testingIcons = new JFrame();
+    ImageIcon iconImg = new ImageIcon("Chess/assets/AppIcon.png");
     String gameType = null;
     final int WIDTH = 800;
     final int HEIGHT = 800;
@@ -17,19 +19,13 @@ public class startMenu extends JFrame implements ActionListener{
         setLayout(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         
-        startMenuBackground.setBounds(0, 0, WIDTH, HEIGHT);
-        try { 
-            ImageIcon im = new ImageIcon("Chess/assets/startMenuBackground.png");
-            startMenuBackground.setIcon(im);
-        } catch (Exception e) {
-            System.err.println(e);
-        }
-        this.add(startMenuBackground);
+        this.setIconImage(iconImg.getImage());
 
         startNewGameButton.setBounds(WIDTH / 4, HEIGHT / 3 * 2, WIDTH / 2, HEIGHT / 6);
         try { 
             ImageIcon im = new ImageIcon("Chess/assets/startNewButton.png");
             startNewGameButton.setIcon(im);
+            startNewGameButton.setText("new");
         } catch (Exception e) {
             System.err.println(e);
         }
@@ -45,6 +41,15 @@ public class startMenu extends JFrame implements ActionListener{
         }
         this.add(startSavedGameButton);
         startSavedGameButton.addActionListener(this);
+
+        startMenuBackground.setBounds(0, 0, WIDTH, HEIGHT);
+        try { 
+            ImageIcon im = new ImageIcon("Chess/assets/startMenuBackground.png");
+            startMenuBackground.setIcon(im);
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+        this.add(startMenuBackground);
 
         this.setVisible(true);
     }

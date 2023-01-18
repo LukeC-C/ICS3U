@@ -1,8 +1,6 @@
 package Chess.game;
 
-import java.io.PipedWriter;
-
-//import javax.swing.*;
+import javax.swing.*;
 
 public abstract class Peice {
     // final JLabel peiceImg = new JLabel();
@@ -110,6 +108,10 @@ public abstract class Peice {
             return new Empty(x, y, null);
         }
     }
+    
+    // public static ImageIcon chooseImage() {
+
+    // }
 
     public abstract void skroinkPeices(Peice[][] pA);
 

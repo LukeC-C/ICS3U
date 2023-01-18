@@ -14,7 +14,13 @@ import java.io.*;
 
 public class Chessboard extends JFrame implements ActionListener {
     Peice[][] peiceArr = new Peice[8][8];
-    int numKings = 0;
+
+        // code not made by me
+        JFrame testingIcons = new JFrame();
+        ImageIcon iconImg = new ImageIcon("Chess/assets/AppIcon.png");
+    
+    boolean wKingAlive = false;
+    boolean bKingAlive = false;
 
     // haven't thought of a better way to do this yet, so im gonna have to deal with this wall of variables
     Rook wRook1 = new Rook("W", 0, 0, peiceArr);
@@ -183,6 +189,10 @@ public class Chessboard extends JFrame implements ActionListener {
         // making the chessboard
         final int WIDTH = 800;
         final int HEIGHT = 800;
+
+            //code not made by me
+            this.setIconImage(iconImg.getImage());
+
         final JLabel chessboard = new JLabel();
 
         setBounds(0, 0, WIDTH + 13, HEIGHT + 55 /* please don't ask me about the hardcoded numbers; swing is weird */);
@@ -499,136 +509,144 @@ public class Chessboard extends JFrame implements ActionListener {
         chessboard.setBounds(0, 0, WIDTH, HEIGHT + 18);
         this.add(chessboard);
 
-        wRook1Image.setIcon(wRook1ImageIcon);
-        wRook1Image.setBounds(wRook1.getXPos() * 100 + 25, wRook1.getYPos() * 100, wRook1.getWIDTH(), wRook1.getHEIGHT());
-        this.add(wRook1Image);
+        
+        // for (int i = 0; i < arr.length; i++) {
+        //     for (int j = 0; j < arr.length; j++) {
 
-        wKnight1Image.setIcon(wKnight1ImageIcon);
-        wKnight1Image.setBounds(wKnight1.getXPos() * 100 + 25, wKnight1.getYPos() * 100, wKnight1.getWIDTH(), wKnight1.getHEIGHT());
-        this.add(wKnight1Image);
+        //         arr[j][i].setIcon();
+        //     }
+        // }
 
-        wBishop1Image.setIcon(wBishop1ImageIcon);
-        wBishop1Image.setBounds(wBishop1.getXPos() * 100 + 25, wBishop1.getYPos() * 100, wBishop1.getWIDTH(), wBishop1.getHEIGHT());
-        this.add(wBishop1Image);
+        // wRook1Image.setIcon(wRook1ImageIcon);
+        // wRook1Image.setBounds(wRook1.getXPos() * 100 + 25, wRook1.getYPos() * 100, wRook1.getWIDTH(), wRook1.getHEIGHT());
+        // this.add(wRook1Image);
 
-        wKingImage.setIcon(wKingImageIcon);
-        wKingImage.setBounds(wKing.getXPos() * 100 + 25, wKing.getYPos() * 100, wKing.getWIDTH(), wKing.getHEIGHT());
-        this.add(wKingImage);
+        // wKnight1Image.setIcon(wKnight1ImageIcon);
+        // wKnight1Image.setBounds(wKnight1.getXPos() * 100 + 25, wKnight1.getYPos() * 100, wKnight1.getWIDTH(), wKnight1.getHEIGHT());
+        // this.add(wKnight1Image);
 
-        wQueenImage.setIcon(wQueenImageIcon);
-        wQueenImage.setBounds(wQueen.getXPos() * 100 + 25, wQueen.getYPos() * 100, wQueen.getWIDTH(), wQueen.getHEIGHT());
-        this.add(wQueenImage);
+        // wBishop1Image.setIcon(wBishop1ImageIcon);
+        // wBishop1Image.setBounds(wBishop1.getXPos() * 100 + 25, wBishop1.getYPos() * 100, wBishop1.getWIDTH(), wBishop1.getHEIGHT());
+        // this.add(wBishop1Image);
 
-        wBishop2Image.setIcon(wBishop2ImageIcon);
-        wBishop2Image.setBounds(wBishop2.getXPos() * 100 + 25, wBishop2.getYPos() * 100, wBishop2.getWIDTH(), wBishop2.getHEIGHT());
-        this.add(wBishop2Image);
+        // wKingImage.setIcon(wKingImageIcon);
+        // wKingImage.setBounds(wKing.getXPos() * 100 + 25, wKing.getYPos() * 100, wKing.getWIDTH(), wKing.getHEIGHT());
+        // this.add(wKingImage);
 
-        wKnight2Image.setIcon(wKnight2ImageIcon);
-        wKnight2Image.setBounds(wKnight2.getXPos() * 100 + 25, wKnight2.getYPos() * 100, wKnight2.getWIDTH(), wKnight2.getHEIGHT());
-        this.add(wKnight2Image);
+        // wQueenImage.setIcon(wQueenImageIcon);
+        // wQueenImage.setBounds(wQueen.getXPos() * 100 + 25, wQueen.getYPos() * 100, wQueen.getWIDTH(), wQueen.getHEIGHT());
+        // this.add(wQueenImage);
 
-        wRook2Image.setIcon(wRook2ImageIcon);
-        wRook2Image.setBounds(wRook2.getXPos() * 100 + 25, wRook2.getYPos() * 100, wRook2.getWIDTH(), wRook2.getHEIGHT());
-        this.add(wRook2Image);
+        // wBishop2Image.setIcon(wBishop2ImageIcon);
+        // wBishop2Image.setBounds(wBishop2.getXPos() * 100 + 25, wBishop2.getYPos() * 100, wBishop2.getWIDTH(), wBishop2.getHEIGHT());
+        // this.add(wBishop2Image);
 
-        wPawn1Image.setIcon(wPawn1ImageIcon);
-        wPawn1Image.setBounds(wPawn1.getXPos() * 100 + 25, wPawn1.getYPos() * 100, wPawn1.getWIDTH(), wPawn1.getHEIGHT());
-        this.add(wPawn1Image);
+        // wKnight2Image.setIcon(wKnight2ImageIcon);
+        // wKnight2Image.setBounds(wKnight2.getXPos() * 100 + 25, wKnight2.getYPos() * 100, wKnight2.getWIDTH(), wKnight2.getHEIGHT());
+        // this.add(wKnight2Image);
 
-        wPawn2Image.setIcon(wPawn2ImageIcon);
-        wPawn2Image.setBounds(wPawn2.getXPos() * 100 + 25, wPawn2.getYPos() * 100, wPawn2.getWIDTH(), wPawn2.getHEIGHT());
-        this.add(wPawn2Image);
+        // wRook2Image.setIcon(wRook2ImageIcon);
+        // wRook2Image.setBounds(wRook2.getXPos() * 100 + 25, wRook2.getYPos() * 100, wRook2.getWIDTH(), wRook2.getHEIGHT());
+        // this.add(wRook2Image);
 
-        wPawn3Image.setIcon(wPawn3ImageIcon);
-        wPawn3Image.setBounds(wPawn3.getXPos() * 100 + 25, wPawn3.getYPos() * 100, wPawn3.getWIDTH(), wPawn3.getHEIGHT());
-        this.add(wPawn3Image);
+        // wPawn1Image.setIcon(wPawn1ImageIcon);
+        // wPawn1Image.setBounds(wPawn1.getXPos() * 100 + 25, wPawn1.getYPos() * 100, wPawn1.getWIDTH(), wPawn1.getHEIGHT());
+        // this.add(wPawn1Image);
 
-        wPawn4Image.setIcon(wPawn4ImageIcon);
-        wPawn4Image.setBounds(wPawn4.getXPos() * 100 + 25, wPawn4.getYPos() * 100, wPawn4.getWIDTH(), wPawn4.getHEIGHT());
-        this.add(wPawn4Image);
+        // wPawn2Image.setIcon(wPawn2ImageIcon);
+        // wPawn2Image.setBounds(wPawn2.getXPos() * 100 + 25, wPawn2.getYPos() * 100, wPawn2.getWIDTH(), wPawn2.getHEIGHT());
+        // this.add(wPawn2Image);
 
-        wPawn5Image.setIcon(wPawn5ImageIcon);
-        wPawn5Image.setBounds(wPawn5.getXPos() * 100 + 25, wPawn5.getYPos() * 100, wPawn5.getWIDTH(), wPawn5.getHEIGHT());
-        this.add(wPawn5Image);
+        // wPawn3Image.setIcon(wPawn3ImageIcon);
+        // wPawn3Image.setBounds(wPawn3.getXPos() * 100 + 25, wPawn3.getYPos() * 100, wPawn3.getWIDTH(), wPawn3.getHEIGHT());
+        // this.add(wPawn3Image);
 
-        wPawn6Image.setIcon(wPawn6ImageIcon);
-        wPawn6Image.setBounds(wPawn6.getXPos() * 100 + 25, wPawn6.getYPos() * 100, wPawn6.getWIDTH(), wPawn6.getHEIGHT());
-        this.add(wPawn6Image);
+        // wPawn4Image.setIcon(wPawn4ImageIcon);
+        // wPawn4Image.setBounds(wPawn4.getXPos() * 100 + 25, wPawn4.getYPos() * 100, wPawn4.getWIDTH(), wPawn4.getHEIGHT());
+        // this.add(wPawn4Image);
 
-        wPawn7Image.setIcon(wPawn7ImageIcon);
-        wPawn7Image.setBounds(wPawn7.getXPos() * 100 + 25, wPawn7.getYPos() * 100, wPawn7.getWIDTH(), wPawn7.getHEIGHT());
-        this.add(wPawn7Image);
+        // wPawn5Image.setIcon(wPawn5ImageIcon);
+        // wPawn5Image.setBounds(wPawn5.getXPos() * 100 + 25, wPawn5.getYPos() * 100, wPawn5.getWIDTH(), wPawn5.getHEIGHT());
+        // this.add(wPawn5Image);
 
-        wPawn8Image.setIcon(wPawn8ImageIcon);
-        wPawn8Image.setBounds(wPawn8.getXPos() * 100 + 25, wPawn8.getYPos() * 100, wPawn8.getWIDTH(), wPawn8.getHEIGHT());
-        this.add(wPawn8Image);
+        // wPawn6Image.setIcon(wPawn6ImageIcon);
+        // wPawn6Image.setBounds(wPawn6.getXPos() * 100 + 25, wPawn6.getYPos() * 100, wPawn6.getWIDTH(), wPawn6.getHEIGHT());
+        // this.add(wPawn6Image);
 
-        bRook1Image.setIcon(bRook1ImageIcon);
-        bRook1Image.setBounds(bRook1.getXPos() * 100 + 25, bRook1.getYPos() * 100, bRook1.getWIDTH(), bRook1.getHEIGHT());
-        this.add(bRook1Image);
+        // wPawn7Image.setIcon(wPawn7ImageIcon);
+        // wPawn7Image.setBounds(wPawn7.getXPos() * 100 + 25, wPawn7.getYPos() * 100, wPawn7.getWIDTH(), wPawn7.getHEIGHT());
+        // this.add(wPawn7Image);
 
-        bKnight1Image.setIcon(bKnight1ImageIcon);
-        bKnight1Image.setBounds(bKnight1.getXPos() * 100 + 25, bKnight1.getYPos() * 100, bKnight1.getWIDTH(), bKnight1.getHEIGHT());
-        this.add(bKnight1Image);
+        // wPawn8Image.setIcon(wPawn8ImageIcon);
+        // wPawn8Image.setBounds(wPawn8.getXPos() * 100 + 25, wPawn8.getYPos() * 100, wPawn8.getWIDTH(), wPawn8.getHEIGHT());
+        // this.add(wPawn8Image);
 
-        bBishop1Image.setIcon(bBishop1ImageIcon);
-        bBishop1Image.setBounds(bBishop1.getXPos() * 100 + 25, bBishop1.getYPos() * 100, bBishop1.getWIDTH(), bBishop1.getHEIGHT());
-        this.add(bBishop1Image);
+        // bRook1Image.setIcon(bRook1ImageIcon);
+        // bRook1Image.setBounds(bRook1.getXPos() * 100 + 25, bRook1.getYPos() * 100, bRook1.getWIDTH(), bRook1.getHEIGHT());
+        // this.add(bRook1Image);
 
-        bQueenImage.setIcon(bQueenImageIcon);
-        bQueenImage.setBounds(bQueen.getXPos() * 100 + 25, bQueen.getYPos() * 100, bQueen.getWIDTH(), bQueen.getHEIGHT());
-        this.add(bQueenImage);
+        // bKnight1Image.setIcon(bKnight1ImageIcon);
+        // bKnight1Image.setBounds(bKnight1.getXPos() * 100 + 25, bKnight1.getYPos() * 100, bKnight1.getWIDTH(), bKnight1.getHEIGHT());
+        // this.add(bKnight1Image);
 
-        bKingImage.setIcon(bKingImageIcon);
-        bKingImage.setBounds(bKing.getXPos() * 100 + 25, bKing.getYPos() * 100, bKing.getWIDTH(), bKing.getHEIGHT());
-        this.add(bKingImage);
+        // bBishop1Image.setIcon(bBishop1ImageIcon);
+        // bBishop1Image.setBounds(bBishop1.getXPos() * 100 + 25, bBishop1.getYPos() * 100, bBishop1.getWIDTH(), bBishop1.getHEIGHT());
+        // this.add(bBishop1Image);
 
-        bBishop2Image.setIcon(bBishop2ImageIcon);
-        bBishop2Image.setBounds(bBishop2.getXPos() * 100 + 25, bBishop2.getYPos() * 100, bBishop2.getWIDTH(), bBishop2.getHEIGHT());
-        this.add(bBishop2Image);
+        // bQueenImage.setIcon(bQueenImageIcon);
+        // bQueenImage.setBounds(bQueen.getXPos() * 100 + 25, bQueen.getYPos() * 100, bQueen.getWIDTH(), bQueen.getHEIGHT());
+        // this.add(bQueenImage);
 
-        bKnight2Image.setIcon(bKnight2ImageIcon);
-        bKnight2Image.setBounds(bKnight2.getXPos() * 100 + 25, bKnight2.getYPos() * 100, bKnight2.getWIDTH(), bKnight2.getHEIGHT());
-        this.add(bKnight2Image);
+        // bKingImage.setIcon(bKingImageIcon);
+        // bKingImage.setBounds(bKing.getXPos() * 100 + 25, bKing.getYPos() * 100, bKing.getWIDTH(), bKing.getHEIGHT());
+        // this.add(bKingImage);
 
-        bRook2Image.setIcon(bRook2ImageIcon);
-        bRook2Image.setBounds(bRook2.getXPos() * 100 + 25, bRook2.getYPos() * 100, bRook2.getWIDTH(), bRook2.getHEIGHT());
-        this.add(bRook2Image);
+        // bBishop2Image.setIcon(bBishop2ImageIcon);
+        // bBishop2Image.setBounds(bBishop2.getXPos() * 100 + 25, bBishop2.getYPos() * 100, bBishop2.getWIDTH(), bBishop2.getHEIGHT());
+        // this.add(bBishop2Image);
 
-        bPawn1Image.setIcon(bPawn1ImageIcon);
-        bPawn1Image.setBounds(bPawn1.getXPos() * 100 + 25, bPawn1.getYPos() * 100, bPawn1.getWIDTH(), bPawn1.getHEIGHT());
-        this.add(bPawn1Image);
+        // bKnight2Image.setIcon(bKnight2ImageIcon);
+        // bKnight2Image.setBounds(bKnight2.getXPos() * 100 + 25, bKnight2.getYPos() * 100, bKnight2.getWIDTH(), bKnight2.getHEIGHT());
+        // this.add(bKnight2Image);
 
-        bPawn2Image.setIcon(bPawn2ImageIcon);
-        bPawn2Image.setBounds(bPawn2.getXPos() * 100 + 25, bPawn2.getYPos() * 100, bPawn2.getWIDTH(), bPawn2.getHEIGHT());
-        this.add(bPawn2Image);
+        // bRook2Image.setIcon(bRook2ImageIcon);
+        // bRook2Image.setBounds(bRook2.getXPos() * 100 + 25, bRook2.getYPos() * 100, bRook2.getWIDTH(), bRook2.getHEIGHT());
+        // this.add(bRook2Image);
 
-        bPawn3Image.setIcon(bPawn3ImageIcon);
-        bPawn3Image.setBounds(bPawn3.getXPos() * 100 + 25, bPawn3.getYPos() * 100, bPawn3.getWIDTH(), bPawn3.getHEIGHT());
-        this.add(bPawn3Image);
+        // bPawn1Image.setIcon(bPawn1ImageIcon);
+        // bPawn1Image.setBounds(bPawn1.getXPos() * 100 + 25, bPawn1.getYPos() * 100, bPawn1.getWIDTH(), bPawn1.getHEIGHT());
+        // this.add(bPawn1Image);
 
-        bPawn4Image.setIcon(bPawn4ImageIcon);
-        bPawn4Image.setBounds(bPawn4.getXPos() * 100 + 25, bPawn4.getYPos() * 100, bPawn4.getWIDTH(), bPawn4.getHEIGHT());
-        this.add(bPawn4Image);
+        // bPawn2Image.setIcon(bPawn2ImageIcon);
+        // bPawn2Image.setBounds(bPawn2.getXPos() * 100 + 25, bPawn2.getYPos() * 100, bPawn2.getWIDTH(), bPawn2.getHEIGHT());
+        // this.add(bPawn2Image);
 
-        bPawn5Image.setIcon(bPawn5ImageIcon);
-        bPawn5Image.setBounds(bPawn5.getXPos() * 100 + 25, bPawn5.getYPos() * 100, bPawn5.getWIDTH(), bPawn5.getHEIGHT());
-        this.add(bPawn5Image);
+        // bPawn3Image.setIcon(bPawn3ImageIcon);
+        // bPawn3Image.setBounds(bPawn3.getXPos() * 100 + 25, bPawn3.getYPos() * 100, bPawn3.getWIDTH(), bPawn3.getHEIGHT());
+        // this.add(bPawn3Image);
 
-        bPawn6Image.setIcon(bPawn6ImageIcon);
-        bPawn6Image.setBounds(100, 100, 100, 100);
-        this.add(bPawn6Image);
+        // bPawn4Image.setIcon(bPawn4ImageIcon);
+        // bPawn4Image.setBounds(bPawn4.getXPos() * 100 + 25, bPawn4.getYPos() * 100, bPawn4.getWIDTH(), bPawn4.getHEIGHT());
+        // this.add(bPawn4Image);
 
-        bPawn7Image.setIcon(bPawn7ImageIcon);
-        bPawn7Image.setBounds(bPawn7.getXPos() * 100 + 25, bPawn7.getYPos() * 100, bPawn7.getWIDTH(), bPawn7.getHEIGHT());
-        this.add(bPawn7Image);
+        // bPawn5Image.setIcon(bPawn5ImageIcon);
+        // bPawn5Image.setBounds(bPawn5.getXPos() * 100 + 25, bPawn5.getYPos() * 100, bPawn5.getWIDTH(), bPawn5.getHEIGHT());
+        // this.add(bPawn5Image);
 
-        bPawn8Image.setIcon(bPawn8ImageIcon);
-        bPawn8Image.setBounds(bPawn8.getXPos() * 100 + 25, bPawn8.getYPos() * 100, bPawn8.getWIDTH(), bPawn8.getHEIGHT());
-        this.add(bPawn8Image);
+        // bPawn6Image.setIcon(bPawn6ImageIcon);
+        // bPawn6Image.setBounds(100, 100, 100, 100);
+        // this.add(bPawn6Image);
 
-        emptyImage.setIcon(emptyImageIcon);
-        this.add(emptyImage);
+        // bPawn7Image.setIcon(bPawn7ImageIcon);
+        // bPawn7Image.setBounds(bPawn7.getXPos() * 100 + 25, bPawn7.getYPos() * 100, bPawn7.getWIDTH(), bPawn7.getHEIGHT());
+        // this.add(bPawn7Image);
+
+        // bPawn8Image.setIcon(bPawn8ImageIcon);
+        // bPawn8Image.setBounds(bPawn8.getXPos() * 100 + 25, bPawn8.getYPos() * 100, bPawn8.getWIDTH(), bPawn8.getHEIGHT());
+        // this.add(bPawn8Image);
+
+        // emptyImage.setIcon(emptyImageIcon);
+        // this.add(emptyImage);
 
         setVisible(true);
 
@@ -638,18 +656,7 @@ public class Chessboard extends JFrame implements ActionListener {
         //             System.out.println("There is a pawn at " + i + ", " + j);
         //         }
         //     }
-        // }
-
-        // System.out.println("""
-        //                         -----------------------------------------------
-        //                         __        __
-        //                         \\ \\  /\\  / /
-        //                          \\ \\/  \\/ /
-        //                           \\  /\\  /
-        //                            \\/  \\/
-                                
-        //                         -----------------------------------------------
-        //                         """);
+        //
 
     }
 
@@ -873,20 +880,43 @@ public class Chessboard extends JFrame implements ActionListener {
                         }
                     }
 
+                    //how to approach
+                        // see if the w/b kings are there 
+                            // iterate through and make a bool true (wKingAlive) when instanceof King | King.getColor()
+                    for (int k = 0; k < arr.length; k++) {
+                        for (int l = 0; l < arr.length; l++) {
+                            if (peiceArr[k][l] instanceof King) {
+                                if (peiceArr[k][l].getColor().equals("W")) {
+                                    wKingAlive = true;
+                                } else {
+                                    bKingAlive = true;
+                                }
+                            }
+                        }
+                    }
+
+                    if (!wKingAlive) {
+                        for (int k = 0; k < arr.length; k++) {
+                            for (int l = 0; l < arr.length; l++){
+                                arr[k][l].setEnabled(false);
+                                
+                            }
+                        }
+                        System.out.println("\n\n\n------------------------\n|     Black Wins!      |\n------------------------\n");
+                    } else if (!bKingAlive) {
+                        for (int k = 0; k < arr.length; k++) {
+                            for (int l = 0; l < arr.length; l++){
+                                arr[k][l].setEnabled(false);
+                                
+                            }
+                        }
+                        System.out.println("\n\n\n------------------------\n|     White Wins!      |\n------------------------\n");
+                    } else {
+                        wKingAlive = false;
+                        bKingAlive = false;
+                    }
                     
-                    // for (int k = 0; k < arr.length; k++) {
-                    //     for (int l = 0; l < arr.length; l++) {
-                    //         if (peiceArr[l][k].getXPos() == wKing.getXPos() && peiceArr[l][k].getYPos() == wKing.getYPos() /*&& peiceArr[l][k].getColor() != wKing.getColor()*/ && !(peiceArr[l][k] instanceof King)) {
-                    //             System.out.println("Black Wins!_____________________________");
-                    //         } else if (peiceArr[l][k].getXPos() == bKing.getXPos() && peiceArr[l][k].getYPos() == wKing.getYPos() && peiceArr[l][k].getColor() != bKing.getColor() && !(peiceArr[l][k] instanceof King)) {
-                    //             System.out.println("White Wins!_____________________________");
-                    //         }
-                    //         // System.out.println(peiceArr[l][k].getXPos() + " " + wKing.getXPos());
-                    //     }
-                    // }
                 }
-                    // System.out.println("kx: " + wKing.getXPos() + " ky: " + wKing.getYPos() + "|" + "px: " + j + " py: " + i);
-                    // TODO finish win screen in console 
             }
         }
     }
