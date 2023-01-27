@@ -1,8 +1,8 @@
 package Chess.game;
 
 public class King extends Peice {
-    public King (String color, int x, int y, Peice[][] pA) {
-        super("King", color, x, y, pA);
+    public King (String color, int n, int x, int y, Peice[][] pA) {
+        super("King", color, n, x, y, pA);
     }
 
     @Override
@@ -10,6 +10,17 @@ public class King extends Peice {
         peiceArr = pA;
     }
 
+    public void checkShouldRender(int x, int y) {
+        if (!(peiceArr[yPos][xPos].getColor().equals(color))) {
+            shouldRender = false;
+        }
+    }
+
+    public boolean getShouldRender() {
+        return shouldRender;
+    }
+
+    // checks to find if the selected square is within one block of the king.
     @Override
     public boolean movePeice(int dX, int dY, int cX, int cY) {
         System.out.println("Wow, you moved a king!");

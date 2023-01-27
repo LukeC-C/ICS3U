@@ -1,8 +1,8 @@
 package Chess.game;
 
 public class Rook extends Peice {
-    public Rook (String color, int x, int y, Peice[][] pA) {
-        super("Rook", color, x, y, pA);
+    public Rook (String color, int n, int x, int y, Peice[][] pA) {
+        super("Rook", color, n, x, y, pA);
     }
 
     @Override
@@ -10,54 +10,67 @@ public class Rook extends Peice {
         peiceArr = pA;
     }
 
-    // TODO make peices be able to block movement of others
+    public void checkShouldRender(int x, int y) {
+        if (!(peiceArr[yPos][xPos].getColor().equals(color))) {
+            shouldRender = false;
+        }
+    }
+
+    public boolean getShouldRender() {
+        return shouldRender;
+    }
+
+    // checks if the selected square is either directly vertical or horizontal of the rook's current position
     @Override
     public boolean movePeice(int dX, int dY, int cX, int cY) {
         System.out.println("Wow, you moved a rook!");
-        Peice[] arraySlice = new Peice[8];
+        // Peice[] arraySlice = new Peice[8];
 
         if ((dX == cX && dY != cY)) {
-            for (int i = peiceArr.length - 1; i > -1; i--) {
-                arraySlice[i] = peiceArr[cX - i][cY];
-            }
-            // if (dY < cY) {
+            // for (int i = peiceArr.length - 1; i > -1; i--) {
+            //     arraySlice[i] = peiceArr[cX - i][cY];
+            // }
+            // // if (dY < cY) {
                 
-                for (int i = dY; i < cY; i++) {
-                    System.out.println(arraySlice[i]);
-                    if (!(arraySlice[i] instanceof Empty)) {
-                        if (!(arraySlice[i] instanceof Rook)) {
-                            System.out.println("nopers");
-                            return false;
-                        } else {
-                            if (!(i == cX)) {
-                                System.out.println(arraySlice[i] + " " + i + " " + cX);
-                                return false;
-                            } else {
-                                System.out.println(arraySlice[i] + " " + i + " " + cX);
-                            }
-                        }
-                    }
-                }
-                // WHAT I NEED TO DO:
-                    // make it so that i detects one less than the 
-
-            // } else {
-            //     for (int i = cY; i < dY; i++) {
+            //     for (int i = dY; i < cY; i++) {
+            //         System.out.println(arraySlice[i]);
             //         if (!(arraySlice[i] instanceof Empty)) {
-            //             System.out.println("nopers");
-            //             return false;
+            //             if (!(arraySlice[i] instanceof Rook)) {
+            //                 System.out.println("nopers");
+            //                 return false;
+            //             } else {
+            //                 if (!(i == cX)) {
+            //                     System.out.println(arraySlice[i] + " " + i + " " + cX);
+            //                     return false;
+            //                 } else {
+            //                     System.out.println(arraySlice[i] + " " + i + " " + cX);
+            //                 }
+            //             }
             //         }
             //     }
-            // }
+            //     // WHAT I NEED TO DO:
+            //         // make it so that i detects one less than the 
+
+            // // } else {
+            // //     for (int i = cY; i < dY; i++) {
+            // //         if (!(arraySlice[i] instanceof Empty)) {
+            // //             System.out.println("nopers");
+            // //             return false;
+            // //         }
+            // //     }
+            // // }
+            super.xPos = dX;
+            super.yPos = dY;
             return true;
         } else if ((dY == cY && dX != cX)){
-
+            super.xPos = dX;
+            super.yPos = dY;
             return true; 
         } else {
             return false;
         }
 
-    //     // I realize how terrible this code is, but I don't feel like fixing it right now
+    //     // old concept
     //     for (int i = 0; i < peiceArr.length; i++) {
     //         for (int j = 0; j < peiceArr.length; j++) {
     //             if (dX == cX) {

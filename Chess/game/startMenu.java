@@ -57,6 +57,7 @@ public class startMenu extends JFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == startNewGameButton){
+            System.out.println("new");
             new Chessboard("new");
         }
         

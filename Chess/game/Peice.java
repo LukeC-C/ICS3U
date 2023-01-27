@@ -1,9 +1,6 @@
 package Chess.game;
 
-import javax.swing.*;
-
 public abstract class Peice {
-    // final JLabel peiceImg = new JLabel();
     final int WIDTH = 48;
     final int HEIGHT = 96;
     Peice[][] peiceArr;
@@ -11,30 +8,16 @@ public abstract class Peice {
     protected String color;
     protected int xPos;
     protected int yPos;
+    protected boolean shouldRender = true;
+    protected int peiceNumber;
     
-    public Peice (String p, String c, int x, int y, Peice[][] pA) {
+    public Peice (String p, String c, int n, int x, int y, Peice[][] pA) {
         peice = p;
         color = c;
+        peiceNumber = n;
         xPos = x;
         yPos = y;
         peiceArr = pA;
-
-        try {
-            // if (p != "Empty") {
-            //     ImageIcon im = new ImageIcon("C:\\Users\\User\\Desktop\\ICS3U\\Chess\\assets\\" + c + "_" + p);
-            //     peiceImg.setIcon(im);
-            //     peiceImg.setBounds(x, y, WIDTH, HEIGHT);
-            //     this.add(peiceImg);
-            // } else if (p == "Empty") {
-            //     peiceImg.setBounds(x, y, WIDTH, HEIGHT);
-            //     this.add(peiceImg);
-            // } else {
-            //     System.out.println("PANIC PANIC PANIC\nSOMETHING HAS GONE VERY, VERY WRONG");
-            // }
-        } catch (Exception e) {
-            System.out.println("Couldn't find file location for " + p);
-        }
-        //setVisible(true);
     }
 
     public String getPeice() {
@@ -56,6 +39,10 @@ public abstract class Peice {
     public int getYPos() {
         return yPos;
     }
+    
+    public int getPeiceNumber() {
+        return peiceNumber;
+    }
 
     public int getHEIGHT() {
         return HEIGHT;
@@ -65,44 +52,46 @@ public abstract class Peice {
         return WIDTH;
     }
 
-    // TODO pass in coords as params. get coords from arr.
-        // before you waste your time on it future me, no you cant just do it in Chessboard
+    public String toString() {
+        return peice.substring(0, 2) + "_" + color.substring(0, 1) + "_" + peiceNumber;
+    }
+    
     public static Peice toPeice(String str, int x, int y) {
         if (str.substring(0,2).equals("Pa")) {
-            if (str.substring(3).equals("W")) {
-                return new Pawn("W", x, y, null);
+            if (str.substring(3, 4).equals("W")) {
+                return new Pawn("W", Integer.parseInt(str.substring(str.length() - 1, str.length())), x, y, null);
             } else {
-                return new Pawn("B", x, y, null);
+                return new Pawn("B", Integer.parseInt(str.substring(str.length() - 1, str.length())), x, y, null);
             }
         } else if (str.substring(0,2).equals("Ro")) {
-            if (str.substring(3).equals("W")) {
-                return new Rook("W", x, y, null);
+            if (str.substring(3, 4).equals("W")) {
+                return new Rook("W", Integer.parseInt(str.substring(str.length() - 1, str.length())), x, y, null);
             } else {
-                return new Rook("B", x, y, null);
+                return new Rook("B", Integer.parseInt(str.substring(str.length() - 1, str.length())), x, y, null);
             }
         } else if (str.substring(0,2).equals("Kn")) {
-            if (str.substring(3).equals("W")) {
-                return new Knight("W", x, y, null);
+            if (str.substring(3, 4).equals("W")) {
+                return new Knight("W", Integer.parseInt(str.substring(str.length() - 1, str.length())), x, y, null);
             } else {
-                return new Knight("B", x, y, null);
+                return new Knight("B", Integer.parseInt(str.substring(str.length() - 1, str.length())), x, y, null);
             }
         } else if (str.substring(0,2).equals("Bi")) {
-            if (str.substring(3).equals("W")) {
-                return new Bishop("W", x, y, null);
+            if (str.substring(3, 4).equals("W")) {
+                return new Bishop("W", Integer.parseInt(str.substring(str.length() - 1, str.length())), x, y, null);
             } else {
-                return new Bishop("B", x, y, null);
+                return new Bishop("B", Integer.parseInt(str.substring(str.length() - 1, str.length())), x, y, null);
             }
         } else if (str.substring(0,2).equals("Qu")) {
-            if (str.substring(3).equals("W")) {
-                return new Queen("W", x, y, null);
+            if (str.substring(3, 4).equals("W")) {
+                return new Queen("W", Integer.parseInt(str.substring(str.length() - 1, str.length())), x, y, null);
             } else {
-                return new Queen("B", x, y, null);
+                return new Queen("B", Integer.parseInt(str.substring(str.length() - 1, str.length())), x, y, null);
             }
         } else if (str.substring(0,2).equals("Ki")) {
-            if (str.substring(3).equals("W")) {
-                return new King("W", x, y, null);
+            if (str.substring(3, 4).equals("W")) {
+                return new King("W", Integer.parseInt(str.substring(str.length() - 1, str.length())), x, y, null);
             } else {
-                return new King("B", x, y, null);
+                return new King("B", Integer.parseInt(str.substring(str.length() - 1, str.length())), x, y, null);
             }
         } else {
             return new Empty(x, y, null);
@@ -116,5 +105,9 @@ public abstract class Peice {
     public abstract void skroinkPeices(Peice[][] pA);
 
     public abstract boolean movePeice(int dX, int dY, int cX, int cY);
+
+    public abstract void checkShouldRender(int dX, int dY);
+
+    public abstract boolean getShouldRender();
 
 }

@@ -1,3 +1,5 @@
 Thanks to u/danimaccari on reddit for the assets
-I adapted their color scheme to make the board, but otherwise all the peices are theirs
+I adapted their color scheme to make the board, but otherwise all the peices are theirs 
+(including the icon for the window)
+
 Logo and buttons on the title screen are done by me, though
