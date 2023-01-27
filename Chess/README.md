@@ -29,7 +29,7 @@ Castling, blocking peice's movement (ex stopping a pawn from moving foreword by 
 
 
 **---Notes for Ms. Torres---**
-As this is technically a school project (despite the fact that it barely feels like one anymore with the amount I've worked on it at home.), I thought I should write some notes about the code here. All comments are either notes on what a block of code or method does or code that has yet to be finished and is still in development. Also, a lot but not all of the i, j, k, l, x, and y variables are swapped, it's just the way it is so that it can work. A fair amount of the time switching those variables around would fix the problem and I was too tired to find another solution so here we are now. 
+As this is technically a school project (despite the fact that it barely feels like one anymore with the amount I've worked on it at home.), I thought I should write some notes about the code here. All comments are either notes on what a block of code or method does or code that has yet to be finished and is still in development. Also, a lot but not all of the i, j, k, l, x, and y variables are swapped, it's just the way it is so that it can work. A fair amount of the time switching those variables around would fix the problem and I was too tired to find another solution so here we are now. Anyways, thanks for the awesome year Ms. Torres and I hope to see you again next year in g12 cs!
 (PS: sorry for the janky movement right now, try clicking on a peice multiple times before clicking the desired square if you are having issues with it).
 
 
